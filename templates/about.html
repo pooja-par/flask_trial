@@ -1,4 +1,54 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2>About Page</h2>
+
+   
+    <h2>{{page_title}}</h2>
+    <p>
+        Welcome to Satvik Vegetarian Restaurant, where we celebrate the art of pure, wholesome, and nourishing food inspired by the ancient wisdom of Satvik living. Our philosophy is rooted in the belief that food is not just sustenance, but a pathway to balance, vitality, and inner peace. Every dish we create is crafted with love, using only the freshest ingredients, naturally sourced, and free from onions, garlic, and any artificial additives, staying true to the principles of Satvik cuisine.
+    </p>
+    <p>
+        At Satvik, we offer a delightful culinary experience that brings together the flavors of traditional vegetarian recipes with a modern twist. Our menu is designed to rejuvenate your mind, body, and spirit, offering a wide variety of delicious, healthy, and energizing options. Whether you are a lifelong vegetarian or someone looking to explore mindful eating, we invite you to savor the taste of pure, natural food in an environment that radiates warmth, serenity, and positivity. 
+    </p>
+    <P>
+        Come join us in our journey towards mindful eating and a healthier, happier lifestyle.
+    </P>
+
+    {% for member in company %}
+
+        <div class="row featurette">
+
+            {% if loop.index % 2 != 0 %}
+
+                <div class="col-md-7">
+                    <h3>{{ loop.index }}. {{ member.name }}</h3>
+                    <p>{{ member.description }}</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+                </div>
+
+            {% else %}
+
+
+                <div class="col-md-5">
+                    <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+                </div>
+                <div class="col-md-7">
+                    <h3>{{ loop.index }}. {{ member.name }}</h3>
+                    <p>{{ member.description }}</p>
+                </div>
+                
+
+            {% endif %}
+
+        </div>
+
+        {% if loop.index != loop.length %}
+
+            <hr class="featurette-divider">
+
+        {% endif %}
+
+    {% endfor %}
+
 {% endblock %}
